@@ -1,0 +1,26 @@
+ const int ldrPin = A0;      // Connect the LDR to analog input A0
+const int pirPin = 2;       // Connect the PIR sensor to digital input 2
+const int ledPin = 13;      // Connect the LED to digital output 13
+int ldrValue = 0;           // Variable to store the LDR value
+int pirValue = 0;           // Variable to store the PIR value
+void setup() {
+  pinMode(ledPin, OUTPUT); // Set the LED pin as an output
+  pinMode(pirPin, INPUT);   // Set the PIR pin as an input
+  Serial.begin(9600);       // Optional: Open a serial connection for debugging
+}
+void loop() {
+  ldrValue = analogRead(ldrPin);   // Read the analog value from the LDR
+  Serial.print("LDR: ");           // Optional: Print the LDR value to the serial monitor
+  Serial.print(ldrValue);
+  pirValue = digitalRead(pirPin);  // Read the digital value from the PIR sensor
+  Serial.print(" PIR: ");          // Optional: Print the PIR value to the serial monitor
+  Serial.println(pirValue);
+  if ((ldrValue < 400) &&  pirValue == LOW) {  // If it's dark and motion is detected,
+    digitalWrite(ledPin, HIGH);               // turn on the LED
+  }
+  if ( pirValue== HIGH)
+  {
+     digitalWrite(ledPin, LOW);             // turn on the LED
+  }
+  delay(1000);                               // Optional: Wait a short time before reading again
+}
