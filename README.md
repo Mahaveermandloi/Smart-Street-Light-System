@@ -3,9 +3,13 @@ A smart street light system is an IoT-based technology that uses sensors, wirele
 
 
  const int ldrPin = A0;      // Connect the LDR to analog input A0
+ 
 const int pirPin = 2;       // Connect the PIR sensor to digital input 2
+
 const int ledPin = 13;      // Connect the LED to digital output 13
+
 int ldrValue = 0;           // Variable to store the LDR value
+
 int pirValue = 0;           // Variable to store the PIR value
 void setup() {
   pinMode(ledPin, OUTPUT); // Set the LED pin as an output
